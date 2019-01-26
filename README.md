@@ -1,1 +1,1 @@
-# maze
+# maze-rl-agent

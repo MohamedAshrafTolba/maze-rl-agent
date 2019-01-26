@@ -3,7 +3,7 @@ from dynamic_programming import policy_iteration, value_iteration
 from util import print_policy
 
 if __name__ == '__main__':
-    env = MazeEnv(6, 6, 0.1)
+    env = MazeEnv(10, 10, 0.3)
 
     # obtain the optimal policy and optimal state-value function
     print('\n')

@@ -6,8 +6,10 @@ def print_policy(policy, n, m, maze):
 	i, j = 0, 0
 	LEFT, DOWN, RIGHT, UP = 0, 1, 2, 3
 	for action_prop in policy:
-		if maze[i, j] == '-' or maze[i, j] == 'G':
+		if maze[i, j] == '-':
 			policy_printed[i, j] = '-'
+		elif maze[i, j] == 'G':
+			policy_printed[i, j] = 'G'
 		elif (action_prop[LEFT] == 1):
 			policy_printed[i, j] = '←'
 		elif (action_prop[DOWN] == 1):

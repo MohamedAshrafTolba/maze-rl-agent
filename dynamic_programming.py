@@ -5,10 +5,8 @@ import copy
 def q_from_v(env, V, s, gamma=1):
     q = np.zeros(env.nA)
     for action in range(env.nA):
-        Va = 0
-        for prop, next_state, reward, done in env.P[s][action]:
-            Va += prop * (reward + gamma * V[next_state])
-        q[action] = Va
+        for prob, next_state, reward, done in env.P[s][action]:
+            q[action] += prob * (reward + gamma * V[next_state])
     return q
 
 
@@ -19,8 +17,8 @@ def policy_evaluation(env, policy, gamma=1, theta=1e-8):
         for state in range(env.nS):
             Vs = 0
             for action, action_prop in enumerate(policy[state]):
-                for prop, next_state, reward, done in env.P[state][action]:
-                    Vs += action_prop * prop * (reward + gamma * V[next_state])
+                for prob, next_state, reward, done in env.P[state][action]:
+                    Vs += action_prop * prob * (reward + gamma * V[next_state])
             delta = max(delta, abs(Vs - V[state]))
             V[state] = Vs
         if delta < theta:

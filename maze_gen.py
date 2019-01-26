@@ -42,5 +42,5 @@ def generate_maze(n: int, m: int, p: float) -> np.ndarray:
 	return maze
 
 
-if __name__ == '__main__':
-	generate_maze(6, 6, 0.1)
+# if __name__ == '__main__':
+# 	generate_maze(6, 6, 0.1)

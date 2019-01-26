@@ -30,3 +30,23 @@ def print_iter(iter, V, env, policy=None):
 		print_policy(policy, n, m, maze)
 	LINELEN = 100
 	print('-' * LINELEN)
+
+def print_path(policy, n, m, maze):
+	start_pos = np.where(maze == 'S')
+	end_pos = np.where(maze == 'G')
+	
+	path = ''
+	x, y = start_pos
+	ARROWS = '←↓→↑'
+	delta = [(0, -1), (1, 0), (0, 1), (-1, 0)]
+	
+	while (x, y) != end_pos:
+		action = np.argmax(policy[x * n + y])
+		path += ARROWS[action]
+		delta_x, delta_y = delta[action]
+		x += delta_x
+		y += delta_y
+
+	print("Path:")
+	print(path)
+	print("Cost: " + str(len(path)))

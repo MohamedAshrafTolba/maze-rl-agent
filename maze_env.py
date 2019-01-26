@@ -54,12 +54,8 @@ class MazeEnv(discrete.DiscreteEnv):
                         new_row, new_col = self.__get_next_state(row, col, action)
                         new_state = self.__get_state(new_row, new_col)
                         new_character = self.maze[new_row, new_col]
-                        if new_character == 'G':
-                            done = True
-                            reward = 0
-                        else:
-                            done = False
-                            reward = -1.0
+                        done = False
+                        reward = -1.0
                         li.append((1.0, new_state, reward, done))
 
         self.P = P

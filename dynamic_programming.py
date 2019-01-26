@@ -63,15 +63,18 @@ def policy_iteration(env, gamma=1, theta=1e-8):
     return policy, V
 
 
-def truncated_policy_iteration(env, max_it=1, gamma=1, theta=1e-8):
+def truncated_policy_iteration(env, max_it=90000000000, gamma=1, theta=1e-8):
     V = np.zeros(env.nS)
     policy = np.zeros([env.nS, env.nA]) / env.nA
+    i = 1
     while True:
         policy = policy_improvement(env, V, gamma)
         old_V = copy.copy(V)
         V = truncated_policy_evaluation(env, policy, V, max_it, gamma)
         if max(abs(V - old_V)) < theta:
             break
+        print_iter(i, V, env, policy)
+        i += 1
     return policy, V
 
 

@@ -27,6 +27,19 @@ def policy_evaluation(env, policy, gamma=1, theta=1e-8):
     return V
 
 
+def truncated_policy_evaluation(env, policy, V, max_it=1, gamma=1):
+    counter = 0
+    while counter < max_it:
+        for state in range(env.nS):
+            Vs = 0
+            for action, action_prob in enumerate(policy[state]):
+                for prob, next_state, reward, done in env.P[state][action]:
+                    Vs += action_prob * prob * (reward + gamma * V[next_state])
+            V[state] = Vs
+        counter += 1
+    return V
+
+
 def policy_improvement(env, V, gamma=1):
     policy = np.zeros([env.nS, env.nA]) / env.nA
     for state in range(env.nS):
@@ -47,6 +60,18 @@ def policy_iteration(env, gamma=1, theta=1e-8):
         policy = copy.copy(new_policy)
         print_iter(i, V, env, policy)
         i += 1
+    return policy, V
+
+
+def truncated_policy_iteration(env, max_it=1, gamma=1, theta=1e-8):
+    V = np.zeros(env.nS)
+    policy = np.zeros([env.nS, env.nA]) / env.nA
+    while True:
+        policy = policy_improvement(env, V, gamma)
+        old_V = copy.copy(V)
+        V = truncated_policy_evaluation(env, policy, V, max_it, gamma)
+        if max(abs(V - old_V)) < theta:
+            break
     return policy, V
 
 

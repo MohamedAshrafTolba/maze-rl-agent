@@ -24,8 +24,8 @@ if __name__ == '__main__':
 
     print('\t\tPolicy Iteration')
     print('-' * LINELEN)
-    
-    policy_pi, V_pi = policy_iteration(env)
+
+    policy_pi, V_pi = truncated_policy_iteration(env)
 
     # print the optimal policy
     print("Optimal Policy:", '\n')

@@ -1,5 +1,5 @@
 from maze_env import MazeEnv
-from dynamic_programming import policy_iteration, value_iteration
+from dynamic_programming import policy_iteration, value_iteration, truncated_policy_iteration
 from util import print_policy
 
 if __name__ == '__main__':

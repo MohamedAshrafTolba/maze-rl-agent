@@ -5,6 +5,9 @@ from util import print_policy
 if __name__ == '__main__':
     env = MazeEnv(10, 10, 0.3)
 
+    with open('mazefile', 'w') as f:
+        f.write(str(env.maze))
+
     # obtain the optimal policy and optimal state-value function
     print('\n')
     LINELEN = 100

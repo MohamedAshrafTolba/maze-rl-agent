@@ -39,13 +39,19 @@ def print_path(policy, n, m, maze):
 	x, y = start_pos
 	ARROWS = '←↓→↑'
 	delta = [(0, -1), (1, 0), (0, 1), (-1, 0)]
-	
+	i, max_path = 0, n * m
+
 	while (x, y) != end_pos:
 		action = np.argmax(policy[x * n + y])
 		path += ARROWS[action]
 		delta_x, delta_y = delta[action]
 		x += delta_x
 		y += delta_y
+		i += 1
+		if i == max_path or maze[x, y] == '-':
+			print("Could not find a path from source to goal")
+			return
+
 
 	print("Path:")
 	print(path)

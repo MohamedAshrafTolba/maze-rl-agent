@@ -4,7 +4,7 @@ from util import print_policy, print_path
 import time
 
 if __name__ == '__main__':
-    env = MazeEnv(10, 10, 0.1)
+    env = MazeEnv(10, 10, 0.3)
 
     with open('mazefile', 'w') as f:
         f.write(str(env.maze))
@@ -16,7 +16,7 @@ if __name__ == '__main__':
     print('-' * LINELEN)
 
     start_time = time.time()
-    policy_pi, V_pi = value_iteration(env)
+    policy_pi, V_pi = value_iteration(env, max_iter=100)
     end_time = time.time()
 
     # print the optimal policy
@@ -32,7 +32,7 @@ if __name__ == '__main__':
     print('-' * LINELEN)
 
     start_time = time.time()
-    policy_pi, V_pi = truncated_policy_iteration(env, max_it=5)
+    policy_pi, V_pi = truncated_policy_iteration(env, max_it=100)
     end_time = time.time()
 
     # print the optimal policy

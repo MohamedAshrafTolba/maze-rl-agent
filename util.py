@@ -18,7 +18,7 @@ def print_policy(policy, n, m, maze):
 			i += 1
 		j = (j + 1) % m
 	print(policy_printed)
-	
+
 
 def print_iter(iter, V, env, policy=None):
 	n, m, maze = env.nrow, env.ncol, env.maze
@@ -31,10 +31,11 @@ def print_iter(iter, V, env, policy=None):
 	LINELEN = 100
 	print('-' * LINELEN)
 
+
 def print_path(policy, n, m, maze):
 	start_pos = np.where(maze == 'S')
 	end_pos = np.where(maze == 'G')
-	
+
 	path = ''
 	x, y = start_pos
 	ARROWS = '←↓→↑'
@@ -51,7 +52,6 @@ def print_path(policy, n, m, maze):
 		if i == max_path or maze[x, y] == '-':
 			print("Could not find a path from source to goal")
 			return
-
 
 	print("Path:")
 	print(path)

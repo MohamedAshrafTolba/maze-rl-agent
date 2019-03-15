@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def generate_maze(n: int, m: int, p: float) -> np.ndarray:
 	"""
 	A method that generates an NxM maze with barriers at random locations.
@@ -40,7 +41,3 @@ def generate_maze(n: int, m: int, p: float) -> np.ndarray:
 
 	print(maze)
 	return maze
-
-
-# if __name__ == '__main__':
-# 	generate_maze(6, 6, 0.1)

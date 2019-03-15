@@ -4,10 +4,12 @@ from gym.envs.toy_text import discrete
 
 from maze_gen import generate_maze
 
+
 LEFT = 0
 DOWN = 1
 RIGHT = 2
 UP = 3
+
 
 class MazeEnv(discrete.DiscreteEnv):
     """
@@ -60,7 +62,6 @@ class MazeEnv(discrete.DiscreteEnv):
 
         self.P = P
         super(MazeEnv, self).__init__(nS, nA, P, isd)
-
 
     def __get_state(self, row, col):
         return row * self.ncol + col

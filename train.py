@@ -3,6 +3,7 @@ from dynamic_programming import policy_iteration, value_iteration, truncated_pol
 from util import print_policy, print_path
 import time
 
+
 if __name__ == '__main__':
     env = MazeEnv(10, 10, 0.3)
 
